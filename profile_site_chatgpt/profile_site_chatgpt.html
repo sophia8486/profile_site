@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rena Utsugi | Portfolio</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0e0f13;
+  --bg-soft: #141621;
+  --text-main: #eaeaf0;
+  --text-sub: #a6a8b3;
+  --accent: #7aa2ff;
+  --border: rgba(255,255,255,0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(1200px 800px at 20% -10%, #1a1d33, var(--bg));
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+/* ---------- Layout ---------- */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 24px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin-bottom: 48px;
+  letter-spacing: 0.04em;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: var(--text-sub);
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+.hero .tag {
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+/* ---------- About ---------- */
+.about p {
+  max-width: 760px;
+  color: var(--text-sub);
+}
+
+/* ---------- Skills ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.skill-card {
+  background: var(--bg-soft);
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.skill-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.skill-card ul {
+  list-style: none;
+}
+
+.skill-card li {
+  color: var(--text-sub);
+  margin-bottom: 8px;
+}
+
+/* ---------- Works ---------- */
+.work-category {
+  margin-bottom: 80px;
+}
+
+.work {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.work h4 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.work .meta {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.work p {
+  color: var(--text-sub);
+  max-width: 900px;
+}
+
+/* ---------- Contact ---------- */
+.contact p {
+  color: var(--text-sub);
+  margin-bottom: 24px;
+}
+
+.links a {
+  display: block;
+  color: var(--text-main);
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: var(--accent);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-sub);
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  section {
+    padding: 80px 20px;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero fade">
+  <div>
+    <span class="tag">Portfolio</span>
+    <h1>Rena Utsugi</h1>
+    <p>Master's student / Engineer<br>
+    「画面の中も、現実空間も。技術で新しい感動を作る」</p>
+  </div>
+</section>
+
+<section class="about fade">
+  <h2 class="section-title">About Me</h2>
+  <p>
+    東海大学大学院 濱本研究室所属（修士課程）。<br><br>
+    Unityを用いたVR/ARコンテンツ開発および実験を中心に、XR技術を活用した研究を行っています。
+    また、Node.js / TypeScriptを用いたWebアプリケーション開発にも注力しています。<br><br>
+    バックエンドから3Dモデリングまでを横断しながら、
+    技術で体験価値を高めることをテーマに日々学習・制作を続けています。
+  </p>
+</section>
+
+<section class="skills fade">
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Core Technologies (Main)</h3>
+      <ul>
+        <li><strong>Unity (C#) / XR Development</strong><br>研究・開発でメイン使用</li>
+        <li><strong>Node.js / TypeScript</strong><br>Web・Botバックエンド</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Learning & Tools (Sub)</h3>
+      <ul>
+        <li>Blender（3D Modeling）</li>
+        <li>AWS / Azure（Cloud）</li>
+        <li>React（Frontend）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="works fade">
+  <h2 class="section-title">Works</h2>
+
+  <div class="work-category">
+    <h3>Academic Projects</h3>
+
+    <div class="work">
+      <h4>AR Guitar Learning System with Dummy Interface</h4>
+      <div class="meta">Graduate Research / Unity, Meta Quest 3, Blender</div>
+      <p>
+        ダミー楽器にARギターを重畳表示し、指板・コード情報を現実空間に提示する学習支援システムを開発中。
+        フルカラーパススルーを活用し、直感的な運指学習を目指しています。
+      </p>
+    </div>
+
+    <div class="work">
+      <h4>VR Sickness Reduction with Active Locomotion</h4>
+      <div class="meta">Undergraduate Research / Unity, VR Devices</div>
+      <p>
+        能動的歩行と音響刺激がVR酔いに与える影響を検証。
+        身体感覚と視聴覚情報の一致が酔い低減に寄与する可能性を分析しました。
+      </p>
+    </div>
+  </div>
+
+  <div class="work-category">
+    <h3>Work Projects</h3>
+
+    <div class="work">
+      <h4>Communication Log Analysis System</h4>
+      <div class="meta">Work / AWS, Node.js, TypeScript</div>
+      <p>
+        通話・チャットログを自動集計するサーバーレスバックエンドを構築。
+        API連携からAWS環境構築まで担当しました。
+      </p>
+    </div>
+
+    <div class="work">
+      <h4>Cloud Learning Management System</h4>
+      <div class="meta">Work / AWS, Node.js, TypeScript</div>
+      <p>
+        学習進捗管理アプリのクラウド構成設計とバックエンド開発を担当。
+        スケーラブルなAWS構成を実装しました。
+      </p>
+    </div>
+  </div>
+
+  <div class="work-category">
+    <h3>Personal Projects</h3>
+
+    <div class="work">
+      <h4>My Learning Log App</h4>
+      <div class="meta">Personal / Node.js, MongoDB, TypeScript</div>
+      <p>
+        学習ログを可視化するWebアプリ。
+        DB設計から実装まで一人で完結。
+      </p>
+    </div>
+
+    <div class="work">
+      <h4>Portfolio Website</h4>
+      <div class="meta">Personal / HTML, CSS, JavaScript</div>
+      <p>
+        本サイト。UI/UX設計と実装の練習として制作。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="contact fade">
+  <h2 class="section-title">Contact / Links</h2>
+  <p>興味を持っていただきありがとうございます。<br>詳細やご連絡はこちらから。</p>
+  <div class="links">
+    <a href="https://github.com/sophia8486" target="_blank">GitHub</a>
+    <a href="https://qiita.com/Sophia_8486" target="_blank">Qiita</a>
+    <a href="https://x.com/Sophia_8486" target="_blank">X</a>
+    <a href="mailto:syuutoku8106@gmail.com">Email</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Rena Utsugi
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
+<script src="main.js"></script>
+</body>
+</html>

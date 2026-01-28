@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rena Utsugi - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Rena Utsugi</a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#works">Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Rena Utsugi</h1>
+        <p class="subtitle">Master's Student / Engineer</p>
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+        </div>
+    </div>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-wrapper">
+            <div class="card about-text">
+                <h3 class="card-title" style="text-align: center; margin-bottom: 2rem;">Rena Utsugi</h3>
+                <p>
+                    東海大学大学院 濱本研究室所属 (修士課程)。<br>
+                    現在は主に、Unityを用いたVR/ARコンテンツ開発および実験を行っています。
+                    また並行して、Node.js / TypeScriptを活用したWebアプリケーションの開発にも注力しています。
+                </p>
+                <p>
+                    「画面の中も、現実空間も。技術で新しい感動を作る」をテーマに、バックエンドから3Dモデリングまで、領域を横断して学習と実践を続けています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="tag" style="background-color: var(--c-primary);">Core Tech</span>
+                    
+                    <h3 class="card-title">Unity (C#) / XR Dev</h3>
+                    <p>研究および開発プロジェクトにてメインで使用。</p>
+                    
+                    <hr class="card-divider">
+                    
+                    <h3 class="card-title">Node.js / TypeScript</h3>
+                    <p>Bot開発やWebアプリのバックエンド構築に使用。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="tag" style="background-color: var(--c-tertiary);">Learning</span>
+                    
+                    <h3 class="card-title">Blender</h3>
+                    <p>実験用のアセット作成や3Dモデリングに使用。</p>
+                    
+                    <hr class="card-divider">
+                    
+                    <h3 class="card-title">AWS / Azure</h3>
+                    <p>クラウドインフラの構築やデプロイ方法を学習中。</p>
+                    
+                    <hr class="card-divider">
+                    
+                    <h3 class="card-title">React</h3>
+                    <p>フロントエンド開発の技術幅を広げるため学習中。</p>
+                </div>
+
+                <div style="margin-top: auto; padding-top: 1.5rem;">
+                    <p class="note-text">
+                        ※ 現在これらを学習・活用し、技術の幅を広げています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="works">
+        <h2 class="section-title">Works</h2>
+
+        <h3 class="category-title" style="border-color: var(--c-secondary); color: var(--c-secondary);">Academic Projects</h3>
+        <div class="grid">
+            <article class="card work-card">
+                <div class="work-thumbnail">
+                    <div class="thumbnail-placeholder">
+                        <span>VR/AR</span>
+                    </div>
+                </div>
+                <div class="work-content">
+                    <span class="tag" style="background-color: var(--c-secondary);">Graduate Research</span>
+                    <h3 class="card-title">AR Guitar Learning System</h3>
+                    <p class="card-subtitle">ダミー楽器を用いたARギター演奏学習システム</p>
+                    <div class="work-meta"><strong>Tech:</strong> Unity (C#), Meta Quest 3, Blender</div>
+                    <p class="work-description">物理的なダミー物体（プロップ）に3DモデルのギターをAR重畳表示するシステム。Meta Quest 3のパススルーを活用し、直感的な運指学習を目指しています。</p>
+                    <div class="card-action">
+                        <span class="action-text">詳細を見る</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card work-card">
+                <div class="work-thumbnail">
+                    <div class="thumbnail-placeholder">
+                        <span>VR</span>
+                    </div>
+                </div>
+                <div class="work-content">
+                    <span class="tag" style="background-color: var(--c-secondary);">Undergraduate Research</span>
+                    <h3 class="card-title">VR Sickness Reduction</h3>
+                    <p class="card-subtitle">VR歩行デバイスと音響によるVR酔い低減の研究</p>
+                    <div class="work-meta"><strong>Tech:</strong> Unity, KAT Walk, Spatial Audio</div>
+                    <p class="work-description">「能動的な歩行動作」と「聴覚刺激」がVR酔いに与える影響を検証。身体感覚と視聴覚情報の一致や、BPMの整合性を統計的に分析しました。</p>
+                    <div class="card-action">
+                        <span class="action-text">詳細を見る</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <h3 class="category-title" style="border-color: var(--c-tertiary); color: var(--c-tertiary);">Work Projects</h3>
+        <div class="grid">
+            <article class="card work-card">
+                <div class="work-thumbnail">
+                    <div class="thumbnail-placeholder">
+                        <span>Backend</span>
+                    </div>
+                </div>
+                <div class="work-content">
+                    <span class="tag" style="background-color: var(--c-tertiary);">Back-end</span>
+                    <h3 class="card-title">Communication Log Analysis</h3>
+                    <p class="card-subtitle">通話・メッセージログ集計システム</p>
+                    <div class="work-meta"><strong>Tech:</strong> AWS (Lambda), Node.js, TypeScript</div>
+                    <p class="work-description">電話対応・チャット件数のログを自動収集・集計するバックエンドシステム。API連携からサーバーレス環境構築までを担当。</p>
+                    <div class="card-action">
+                        <span class="action-text">詳細を見る</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card work-card">
+                <div class="work-thumbnail">
+                    <div class="thumbnail-placeholder">
+                        <span>Cloud</span>
+                    </div>
+                </div>
+                <div class="work-content">
+                    <span class="tag" style="background-color: var(--c-tertiary);">Infra / Back-end</span>
+                    <h3 class="card-title">Cloud LMS Dev</h3>
+                    <p class="card-subtitle">AWS学習管理アプリ開発</p>
+                    <div class="work-meta"><strong>Tech:</strong> AWS (Lambda), Node.js, TypeScript</div>
+                    <p class="work-description">学習進捗を管理するWebアプリのクラウドインフラ構築およびバックエンド開発。スケーラビリティを考慮した設計を実施。</p>
+                    <div class="card-action">
+                        <span class="action-text">詳細を見る</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <h3 class="category-title" style="border-color: var(--c-navy); color: var(--c-navy);">Personal Projects</h3>
+        <div class="grid">
+            <article class="card work-card">
+                <div class="work-thumbnail">
+                    <div class="thumbnail-placeholder">
+                        <span>Web App</span>
+                    </div>
+                </div>
+                <div class="work-content">
+                    <span class="tag" style="background-color: var(--c-navy);">Web App</span>
+                    <h3 class="card-title">My Learning Log App</h3>
+                    <p class="card-subtitle">個人学習ログ管理アプリ</p>
+                    <div class="work-meta"><strong>Tech:</strong> Node.js, MongoDB, TypeScript</div>
+                    <p class="work-description">日々の学習記録を可視化・管理するためのWebアプリ。DB設計から実装まで一人で完結させました。</p>
+                    <div class="card-action">
+                        <span class="action-text">詳細を見る</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card work-card">
+                <div class="work-thumbnail">
+                    <div class="thumbnail-placeholder">
+                        <span>Portfolio</span>
+                    </div>
+                </div>
+                <div class="work-content">
+                    <span class="tag" style="background-color: var(--c-navy);">Web Site</span>
+                    <h3 class="card-title">Portfolio Website</h3>
+                    <p class="card-subtitle">当プロフィールサイト</p>
+                    <div class="work-meta"><strong>Tech:</strong> HTML, CSS, JavaScript</div>
+                    <p class="work-description">自身のスキルと実績をまとめたシングルページサイト。設計からコーディングまでを行いました。</p>
+                    <div class="card-action">
+                        <span class="action-text">詳細を見る</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-intro-wrapper">
+            <p class="contact-intro">
+                興味を持っていただきありがとうございます。<br>
+                コードの詳細やご連絡は、以下のリンクまたはメールにてお願いいたします。
+            </p>
+        </div>
+
+        <div class="grid">
+            <a href="https://github.com/sophia8486" target="_blank" rel="noopener noreferrer" class="card interactive contact-card">
+                <div class="contact-link-inner">
+                    <span class="contact-icon">GitHub</span>
+                    <p class="contact-description">ソースコードや開発履歴はこちら</p>
+                    <div class="link-arrow">→</div>
+                </div>
+            </a>
+
+            <a href="https://qiita.com/Sophia_8486" target="_blank" rel="noopener noreferrer" class="card interactive contact-card">
+                <div class="contact-link-inner">
+                    <span class="contact-icon">Qiita</span>
+                    <p class="contact-description">技術メモや学習ログを共有しています。</p>
+                    <div class="link-arrow">→</div>
+                </div>
+            </a>
+
+            <a href="https://x.com/Sophia_8486" target="_blank" rel="noopener noreferrer" class="card interactive contact-card">
+                <div class="contact-link-inner">
+                    <span class="contact-icon">X (Twitter)</span>
+                    <p class="contact-description">お気軽にフォローしてください！</p>
+                    <div class="link-arrow">→</div>
+                </div>
+            </a>
+
+            <a href="mailto:syuutoku8106@gmail.com" class="card interactive contact-card">
+                <div class="contact-link-inner">
+                    <span class="contact-icon">Email</span>
+                    <p class="contact-description">syuutoku8106@gmail.com</p>
+                    <div class="link-arrow">→</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>最後まで見ていただきありがとうございます。</p>
+        <p style="margin-top: 1rem;">© 2026 Rena Utsugi</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

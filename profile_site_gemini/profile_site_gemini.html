@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rena Utsugi | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Manrope:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+        /* * DESIGN SYSTEM & VARIABLES
+         */
+        :root {
+            --bg-color: #121214; /* Deep matte charcoal */
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #e0e0e0;
+            --text-muted: #8a8a90;
+            --accent: #a5b4fc; /* Soft Indigo */
+            --accent-glow: rgba(165, 180, 252, 0.15);
+            --font-serif: 'Cormorant Garamond', serif; /* Elegant, intellectual */
+            --font-sans: 'Manrope', 'Noto Sans JP', sans-serif; /* Modern, clean */
+            --spacing-section: 120px;
+            --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* * RESET & BASE STYLES
+         */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            letter-spacing: 0.04em;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* * LAYOUT UTILITIES
+         */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding-bottom: var(--spacing-section);
+            position: relative;
+        }
+
+        /* * TYPOGRAPHY
+         */
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-main);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background-color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* * HERO SECTION
+         */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero-name {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-role {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-family: var(--font-sans);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            opacity: 0.5;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translate(-50%, 0);}
+            40% {transform: translate(-50%, -10px);}
+            60% {transform: translate(-50%, -5px);}
+        }
+
+        /* * ABOUT SECTION
+         */
+        .profile-quote {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            font-style: italic;
+        }
+
+        /* * SKILLS SECTION
+         */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .skill-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .skill-list strong {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* * WORKS SECTION
+         */
+        .works-category {
+            margin-bottom: 4rem;
+        }
+
+        .works-category-title {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-family: var(--font-sans);
+            letter-spacing: 0.05em;
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            transition: transform 0.4s var(--transition-smooth), background 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .work-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .work-card:hover::before {
+            opacity: 1;
+        }
+
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .work-title {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            font-family: var(--font-serif);
+        }
+
+        .work-type {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border: 1px solid var(--text-muted);
+            border-radius: 20px;
+            color: var(--text-muted);
+        }
+
+        .work-tech {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* * CONTACT SECTION
+         */
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(165, 180, 252, 0.05);
+            border-color: var(--accent);
+        }
+
+        .contact-item span {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-serif);
+        }
+
+        .contact-item small {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* * FOOTER
+         */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* * ANIMATION UTILITIES
+         */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Delays for cascading effect */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+
+        /* * RESPONSIVE ADJUSTMENTS
+         */
+        @media (max-width: 768px) {
+            :root {
+                --spacing-section: 80px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .work-header {
+                flex-direction: column;
+            }
+            .work-type {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="hero" class="container fade-in-section is-visible">
+        <span class="subtitle">Portfolio</span>
+        <h1 class="hero-name">Rena Utsugi</h1>
+        <p class="hero-role">Master's Student / Engineer / XR Developer</p>
+        <p style="max-width: 600px; color: var(--text-muted);">
+            画面の中も、現実空間も。<br>
+            技術で新しい感動を作る。
+        </p>
+        <div class="scroll-indicator">SCROLL</div>
+    </section>
+
+    <section id="about" class="container section fade-in-section">
+        <span class="subtitle">01. INTRODUCTION</span>
+        <h2 class="section-title">About Me</h2>
+        
+        <div class="profile-quote">
+            東海大学大学院 濱本研究室所属。
+        </div>
+        
+        <p>
+            修士課程にて、主にUnityを用いたVR/ARコンテンツ開発および実験を行っています。<br>
+            また、Node.js / TypeScriptを活用したWebアプリケーションの開発にも注力しています。
+        </p>
+        <p>
+            「画面の中も、現実空間も。技術で新しい感動を作る」をテーマに、現在バックエンドから3Dモデリングまで、
+            クリエイティブとエンジニアリングの境界を越えて幅広く学習中です。
+        </p>
+    </section>
+
+    <section id="skills" class="container section fade-in-section">
+        <span class="subtitle">02. TECHNOLOGY</span>
+        <h2 class="section-title">Skills</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Core Technologies (Main)</h3>
+                <ul class="skill-list">
+                    <li><strong>Unity (C#) / XR Development</strong><br>研究および開発プロジェクトにてメインで使用。</li>
+                    <li><strong>Node.js / TypeScript</strong><br>Bot開発やWebアプリのバックエンド構築に使用。</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Learning & Tools (Sub)</h3>
+                <ul class="skill-list">
+                    <li><strong>Blender</strong> - 3D Modeling</li>
+                    <li><strong>AWS / Azure</strong> - Cloud Infrastructure</li>
+                    <li><strong>React</strong> - Frontend Library</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="container section fade-in-section">
+        <span class="subtitle">03. PROJECTS</span>
+        <h2 class="section-title">Works</h2>
+
+        <div class="works-category">
+            <h3 class="works-category-title">Academic Projects (研究・実験)</h3>
+            
+            <div class="work-card">
+                <div class="work-header">
+                    <span class="work-title">AR Guitar Learning System</span>
+                    <span class="work-type">Graduate Research</span>
+                </div>
+                <div class="work-tech">Unity (C#), Meta Quest 3, Blender</div>
+                <p>
+                    「楽器を持っていなくても演奏を学べる」をコンセプトに、物理的なダミー物体（プロップ）に3DモデルのギターをAR重畳表示するシステムを開発中。
+                    Meta Quest 3のフルカラーパススルー機能を活用し、指板やコード情報（G, D, Em, C等）を現実空間に投影することで、直感的な運指学習の実現を目指しています。
+                </p>
+            </div>
+
+            <div class="work-card">
+                <div class="work-header">
+                    <span class="work-title">VR Sickness Reduction Study</span>
+                    <span class="work-type">Undergraduate Research</span>
+                </div>
+                <div class="work-tech">Unity, KAT Walk, VIVE Pro Eye, Spatial Audio</div>
+                <p>
+                    「能動的な歩行動作」と「聴覚刺激」がVR酔いに与える影響を検証する実験システムを構築。
+                    歩行デバイス（KAT Walk）と音響条件（環境音・楽曲）を比較し、身体感覚と視聴覚情報の一致やBPMの整合性が酔い低減に寄与する可能性を統計的に分析しました。
+                </p>
+            </div>
+        </div>
+
+        <div class="works-category">
+            <h3 class="works-category-title">Work Projects (実務経験)</h3>
+            
+            <div class="work-card">
+                <div class="work-header">
+                    <span class="work-title">Communication Log Analysis</span>
+                    <span class="work-type">Internship</span>
+                </div>
+                <div class="work-tech">AWS (Lambda), Node.js, TypeScript</div>
+                <p>
+                    電話対応・チャット件数のログを自動収集・集計するバックエンドシステムを構築。API連携の実装から、AWS上でのサーバーレス環境構築までを担当。
+                </p>
+            </div>
+
+            <div class="work-card">
+                <div class="work-header">
+                    <span class="work-title">Cloud Learning Management System</span>
+                    <span class="work-type">Internship</span>
+                </div>
+                <div class="work-tech">AWS (Lambda), Node.js, TypeScript</div>
+                <p>
+                    学習進捗を管理するWebアプリケーションのクラウドインフラ構築およびバックエンド開発を担当。スケーラビリティを考慮したAWS構成の設計・実装を行いました。
+                </p>
+            </div>
+        </div>
+
+        <div class="works-category">
+            <h3 class="works-category-title">Personal Projects (個人開発)</h3>
+            
+            <div class="work-card">
+                <div class="work-header">
+                    <span class="work-title">My Learning Log App</span>
+                    <span class="work-type">Web App</span>
+                </div>
+                <div class="work-tech">Node.js, MongoDB, TypeScript</div>
+                <p>
+                    日々の学習記録を可視化・管理するためのWebアプリ。データベース設計から実装まで一人で完結させ、MongoDBを用いたデータ永続化を実装しました。
+                </p>
+            </div>
+
+            <div class="work-card">
+                <div class="work-header">
+                    <span class="work-title">Portfolio Website</span>
+                    <span class="work-type">This Site</span>
+                </div>
+                <div class="work-tech">HTML, CSS, JavaScript</div>
+                <p>
+                    自身のスキルと実績をまとめたシングルページサイト。設計からコーディングまでを行い、情報設計（UI/UX）の練習として作成。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container section fade-in-section">
+        <span class="subtitle">04. GET IN TOUCH</span>
+        <h2 class="section-title">Contact</h2>
+        <p>興味を持っていただきありがとうございます。<br>コードの詳細やご連絡は以下よりお願いいたします。</p>
+
+        <div class="contact-links">
+            <a href="https://github.com/sophia8486" target="_blank" class="contact-item">
+                <span>GitHub</span>
+                <small>ソースコード・開発履歴</small>
+            </a>
+            <a href="https://qiita.com/Sophia_8486" target="_blank" class="contact-item">
+                <span>Qiita</span>
+                <small>技術メモ・学習ログ</small>
+            </a>
+            <a href="https://x.com/Sophia_8486" target="_blank" class="contact-item">
+                <span>X (Twitter)</span>
+                <small>@Sophia_8486</small>
+            </a>
+            <a href="mailto:syuutoku8106@gmail.com" class="contact-item">
+                <span>Email</span>
+                <small>syuutoku8106@gmail.com</small>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Rena Utsugi. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Trigger once
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in-section');
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Smooth scrolling for anchor links (fallback for Safari older versions)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

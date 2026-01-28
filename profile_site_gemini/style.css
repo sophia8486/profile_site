@@ -1,0 +1,540 @@
+@charset "UTF-8";
+
+/* =========================================
+   1. VARIABLES & DESIGN TOKENS
+   ========================================= */
+:root {
+    /* Base Colors - 深みのあるダークテーマ */
+    --bg-main: #0e0e10;       /* 漆黒に近いチャコール */
+    --bg-gradient: radial-gradient(circle at 50% -20%, #1a1b26 0%, #0e0e10 100%);
+    
+    /* Text Colors */
+    --text-primary: #f0f0f2;
+    --text-secondary: #94949a;
+    --text-tertiary: #52525b;
+
+    /* Accent Colors - 知的なミュートブルー/パープル */
+    --accent: #a5b4fc;        /* 淡いインディゴ */
+    --accent-glow: rgba(165, 180, 252, 0.3);
+    
+    /* Glassmorphism Settings - すりガラス効果の定義 */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: 12px;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Manrope', 'Noto Sans JP', sans-serif;
+
+    /* Spacing & Layout */
+    --section-spacing: 160px; /* 広大な余白 */
+    --container-width: 960px;
+    
+    /* Transitions */
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* =========================================
+   2. GLOBAL RESET & BASE STYLES
+   ========================================= */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    background-image: var(--bg-gradient);
+    background-attachment: fixed; /* 背景を固定して奥行きを出す */
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   3. UTILITY CLASSES & ANIMATIONS
+   ========================================= */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Fade-in Animation Keyframes */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* JavaScriptでクラスが付与された時に発火 */
+.fade-in-section {
+    opacity: 0; /* 初期状態は非表示 */
+}
+
+.fade-in-section.is-visible {
+    animation: fadeInUp 1.2s var(--ease-out-expo) forwards;
+}
+
+/* Stagger delays for children elements if needed */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+/* =========================================
+   4. TYPOGRAPHY
+   ========================================= */
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.section-title {
+    font-size: 3.5rem; /* 参考サイトのような大きな見出し */
+    color: var(--text-primary);
+    margin-bottom: 4rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* 見出しの装飾（控えめなアクセント） */
+.section-title::before {
+    content: attr(data-subtitle); /* HTML側で対応可能なら */
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.subtitle {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+}
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+/* =========================================
+   5. HERO SECTION
+   ========================================= */
+#hero {
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-name {
+    font-size: clamp(4rem, 10vw, 8rem); /* レスポンシブな巨大フォント */
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(120deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 80px rgba(165, 180, 252, 0.15); /* ほのかな発光 */
+}
+
+.hero-role {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero-role::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--text-tertiary);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--text-tertiary);
+    animation: scrollBounce 2.5s infinite;
+    writing-mode: vertical-rl; /* 縦書きでモダンな演出 */
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+    50% { transform: translateX(-50%) translateY(10px); opacity: 1; }
+}
+
+/* =========================================
+   6. SECTIONS COMMON
+   ========================================= */
+.section {
+    padding-bottom: var(--section-spacing);
+}
+
+/* =========================================
+   7. SKILLS (Glass Grid)
+   ========================================= */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    /* Glassmorphism Base Style for Containers */
+    background: transparent; /* スキルカテゴリは枠線を消してシンプルに */
+    padding: 1rem 0;
+}
+
+.skill-category h3 {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.skill-category h3::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.skill-list li {
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 0.8rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px; /* 角を少し丸める */
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    
+    /* リストマーカーの削除 */
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-list li::before {
+    content: none; /* デフォルトのマーカーを消す */
+}
+
+.skill-list li:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(165, 180, 252, 0.3);
+    transform: translateX(5px); /* 右に少しズレる演出 */
+}
+
+.skill-list strong {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    display: block;
+}
+
+/* =========================================
+   8. WORKS (Interactive Glass Cards)
+   ========================================= */
+.works-category {
+    margin-bottom: 6rem;
+}
+
+.works-category-title {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.1em;
+    border-left: 1px solid var(--accent);
+    padding-left: 1rem;
+    line-height: 1;
+}
+
+/* 究極のGlassmorphismカード */
+.work-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s var(--ease-out-expo), 
+                box-shadow 0.5s var(--ease-out-expo),
+                border-color 0.3s ease;
+}
+
+/* カードHover時のリッチなエフェクト */
+.work-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(165, 180, 252, 0.1); /* ほのかなグロー */
+    border-color: rgba(165, 180, 252, 0.3);
+}
+
+/* 背景にうっすら光を走らせる */
+.work-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255, 255, 255, 0.03) 50%,
+        transparent 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.8s ease;
+    pointer-events: none;
+}
+
+.work-card:hover::after {
+    left: 200%;
+    transition: left 1s ease;
+}
+
+/* Remove default accent line from previous CSS */
+.work-card::before {
+    display: none; 
+}
+
+.work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 1rem;
+}
+
+.work-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+}
+
+.work-type {
+    font-size: 0.75rem;
+    padding: 0.4em 1em;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.work-tech {
+    font-family: 'Courier New', monospace; /* 技術的な印象 */
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+/* =========================================
+   9. CONTACT & LINKS
+   ========================================= */
+.contact-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-item:hover {
+    background: rgba(165, 180, 252, 0.08); /* Accent color tint */
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.contact-item span {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.contact-item small {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   10. FOOTER
+   ========================================= */
+footer {
+    padding: 4rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    margin-top: 4rem;
+}
+
+/* =========================================
+   11. RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 768px) {
+    :root {
+        --section-spacing: 100px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .hero-name {
+        font-size: 3.5rem; /* スマホでの最適化 */
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .work-card {
+        padding: 1.5rem;
+    }
+    
+    .work-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .profile-quote {
+        font-size: 1.2rem;
+    }
+}
+
+/* =========================================
+   JS Interaction Styles
+   ========================================= */
+
+/* --- 1. スクロール連動アニメーション用 --- */
+/* 初期状態：少し下に下がって透明 */
+.fade-in-trigger {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+/* 表示状態：元の位置に戻って不透明 */
+.fade-in-trigger.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 2. マウスストーカー（テック感演出） --- */
+/* PCのみ表示（スマホなどのタッチデバイスでは邪魔になるため非表示） */
+@media (hover: hover) and (pointer: fine) {
+    .cursor-stalker {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(0, 123, 255, 0.5); /* テーマカラーに合わせて調整可 */
+        border-radius: 50%;
+        background-color: rgba(0, 123, 255, 0.05);
+        pointer-events: none; /* クリックを邪魔しないように */
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease-out; /* ここはJSで制御しますが、初期値として */
+        mix-blend-mode: exclusion; /* 背景と重なった時に色が反転するテックっぽい演出 */
+        will-change: transform;
+    }
+
+    /* リンクホバー時に少し拡大して色を変える */
+    .cursor-stalker.is-hovering {
+        transform: translate(-50%, -50%) scale(1.5);
+        background-color: rgba(0, 123, 255, 0.2);
+        border-color: rgba(0, 123, 255, 0.8);
+    }
+}
