@@ -373,8 +373,37 @@ section.visible {
     overflow: hidden;
     background: linear-gradient(135deg, #f0ebe4 0%, #e8e3dc 100%);
     position: relative;
+    display: flex;
+    gap: 0;
 }
 
+/* 実際の画像 */
+.thumbnail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s var(--ease-expo);
+}
+
+/* 2枚目の画像（学部研究用） */
+.thumbnail-secondary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.work-card:hover .thumbnail-secondary {
+    opacity: 1;
+}
+
+.work-card:hover .thumbnail-image {
+    transform: scale(1.05);
+}
+
+/* プレースホルダー（画像がない場合のフォールバック） */
 .thumbnail-placeholder {
     width: 100%;
     height: 100%;
@@ -476,10 +505,12 @@ section.visible {
 
 .contact-card {
     transition: all 0.4s var(--ease-expo);
+    padding: 1.5rem 1rem;
+    min-height: auto;
 }
 
 .contact-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-8px) scale(1.02);
 }
 
 .contact-link-inner {
@@ -489,36 +520,30 @@ section.visible {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0.8rem;
     height: 100%;
     text-align: center;
-    padding: 1rem 0;
+}
+
+/* Contact アイコン画像 */
+.contact-icon-img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: grayscale(0%);
+}
+
+.contact-card:hover .contact-icon-img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
 .contact-icon {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: var(--c-navy);
-    margin-bottom: 0.8rem;
     font-weight: 600;
     display: block;
-}
-
-.contact-description {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: var(--c-subtext);
-    font-weight: 400;
-}
-
-.link-arrow {
-    margin-top: 1.2rem;
-    color: var(--c-primary);
-    font-weight: bold;
-    font-size: 1.4rem;
-    transition: transform 0.3s ease;
-}
-
-.contact-card:hover .link-arrow {
-    transform: translateX(8px);
 }
 
 /* =========================================
@@ -730,6 +755,19 @@ section {
 
 .work-thumbnail {
     height: 160px;
+}
+
+.contact-card {
+    padding: 1.2rem 0.8rem;
+}
+
+.contact-icon-img {
+    width: 44px;
+    height: 44px;
+}
+
+.contact-icon {
+    font-size: 1rem;
 }
 
 .cursor-follower,
